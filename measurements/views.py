@@ -39,7 +39,6 @@ def measurement_view(request, pk):
         return HttpResponse(measurement, 'application/json')
 
     if request.method == 'PUT':
-        print('a')
         measurement_dto = vl.update_measurement(pk, json.loads(request.body))
         measurement = serializers.serialize('json', [measurement_dto,])
         return HttpResponse(measurement, 'application/json')

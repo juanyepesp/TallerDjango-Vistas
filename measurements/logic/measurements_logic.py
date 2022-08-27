@@ -18,6 +18,7 @@ def get_measurement(var_pk):
 
 def update_measurement(var_pk, new_var):
     measurement = get_measurement(var_pk)
+    measurement.variable = new_var["variable_id"]
     measurement.value = new_var["value"]
     measurement.unit = new_var["unit"]
     measurement.place = new_var["place"]
@@ -26,7 +27,7 @@ def update_measurement(var_pk, new_var):
 
 
 def create_measurement(var):
-    measurement = Measurement(value=var["value"], place=var["place"], unit=var["unit"])
+    measurement = Measurement(variable_id=var["variable_id"],value=var["value"], place=var["place"], unit=var["unit"])
     measurement.save()
     return measurement
 
